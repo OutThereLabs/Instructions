@@ -37,6 +37,14 @@ public class CoachMarksController {
     /// be called at various points.
     public weak var delegate: CoachMarksControllerDelegate?
 
+    /// Assign your own CoachMarkLayoutHelper if you want 
+    /// be called at various points.
+    public var coachMarkLayoutHelper: CoachMarkLayoutHelper?
+
+    /// Assign your own CoachMarkLayoutHelper if you want
+    /// be called at various points.
+    public var coachMarkInnerLayoutHelper: CoachMarkInnerLayoutHelper?
+
     /// Hide the UI.
     fileprivate(set) public lazy var overlay: OverlayManager = {
         let overlay = OverlayManager()
@@ -181,7 +189,7 @@ extension CoachMarksController: OverlayManagerDelegate {
 private extension CoachMarksController {
     func buildCoachMarkDisplayManager() -> CoachMarkDisplayManager {
         let coachMarkDisplayManager =
-            CoachMarkDisplayManager(coachMarkLayoutHelper: CoachMarkLayoutHelper())
+            CoachMarkDisplayManager(coachMarkLayoutHelper: coachMarkLayoutHelper ?? DefaultCoachMarkLayoutHelper(), coachMarkInnerLayoutHelper: coachMarkInnerLayoutHelper)
         coachMarkDisplayManager.dataSource = self
 
         return coachMarkDisplayManager

@@ -22,8 +22,18 @@
 
 import UIKit
 
+public protocol CoachMarkLayoutHelper {
+    func constraints(for coachMarkView: CoachMarkView, coachMark: CoachMark, parentView: UIView, layoutDirection: UIUserInterfaceLayoutDirection?) -> [NSLayoutConstraint]
+}
+
+public extension CoachMarkLayoutHelper {
+    func constraints(for coachMarkView: CoachMarkView, coachMark: CoachMark, parentView: UIView) -> [NSLayoutConstraint] {
+        return constraints(for: coachMarkView, coachMark: coachMark, parentView: parentView, layoutDirection: nil)
+    }
+}
+
 // swiftlint:disable line_length
-class CoachMarkLayoutHelper {
+class DefaultCoachMarkLayoutHelper: CoachMarkLayoutHelper {
     var layoutDirection: UIUserInterfaceLayoutDirection = .leftToRight
 
     // TODO: Improve the layout system. Make it smarter.

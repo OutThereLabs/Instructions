@@ -23,8 +23,8 @@
 import UIKit
 
 /// Define the horizontal position of the coach mark.
-enum CoachMarkPosition {
-    var layoutAttribute: NSLayoutAttribute {
+public enum CoachMarkPosition {
+    public var layoutAttribute: NSLayoutAttribute {
         switch self {
         case .leading: return .leading
         case .center: return .centerX
@@ -38,4 +38,4 @@ enum CoachMarkPosition {
 }
 
 /// Define the horizontal position of the arrow.
-typealias ArrowPosition = CoachMarkPosition
+public typealias ArrowPosition = CoachMarkPosition

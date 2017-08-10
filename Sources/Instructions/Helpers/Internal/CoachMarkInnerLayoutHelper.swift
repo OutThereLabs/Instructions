@@ -22,7 +22,17 @@
 
 import UIKit
 
-class CoachMarkInnerLayoutHelper {
+public protocol CoachMarkInnerLayoutHelper {
+    func horizontalArrowConstraints(for coachMarkViews: CoachMarkViews,
+                                    withPosition position: ArrowPosition,
+                                    horizontalOffset: CGFloat) -> NSLayoutConstraint
+
+    func verticalConstraints(for coachMarkViews: CoachMarkViews, in parentView: UIView,
+                             withProperties properties: CoachMarkViewProperties)
+        -> [NSLayoutConstraint]
+}
+
+class DefaultCoachMarkInnerLayoutHelper: CoachMarkInnerLayoutHelper {
     func horizontalArrowConstraints(for coachMarkViews: CoachMarkViews,
                                     withPosition position: ArrowPosition,
                                     horizontalOffset: CGFloat) -> NSLayoutConstraint {
@@ -97,6 +107,6 @@ class CoachMarkInnerLayoutHelper {
     }
 }
 
-typealias CoachMarkViews = (bodyView: UIView, arrowView: UIView)
-typealias CoachMarkViewProperties = (orientation: CoachMarkArrowOrientation,
+public typealias CoachMarkViews = (bodyView: UIView, arrowView: UIView)
+public typealias CoachMarkViewProperties = (orientation: CoachMarkArrowOrientation,
                                      verticalArrowOffset: CGFloat)

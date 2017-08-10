@@ -36,12 +36,15 @@ class CoachMarkDisplayManager {
 
     private let coachMarkLayoutHelper: CoachMarkLayoutHelper
 
+    private let coachMarkInnerLayoutHelper: CoachMarkInnerLayoutHelper?
+
     // MARK: - Initialization
     /// Allocate and initialize the manager.
     ///
     /// - Parameter coachMarkLayoutHelper: auto-layout constraint generator
-    init(coachMarkLayoutHelper: CoachMarkLayoutHelper) {
+    init(coachMarkLayoutHelper: CoachMarkLayoutHelper, coachMarkInnerLayoutHelper: CoachMarkInnerLayoutHelper? = nil) {
         self.coachMarkLayoutHelper = coachMarkLayoutHelper
+        self.coachMarkInnerLayoutHelper = coachMarkInnerLayoutHelper
     }
 
     func createCoachMarkView(from coachMark: CoachMark, at index: Int) -> CoachMarkView {
@@ -56,7 +59,7 @@ class CoachMarkDisplayManager {
                              arrowView: coachMarkComponentViews.arrowView,
                              arrowOrientation: coachMark.arrowOrientation,
                              arrowOffset: coachMark.gapBetweenBodyAndArrow,
-                             coachMarkInnerLayoutHelper: CoachMarkInnerLayoutHelper())
+                             coachMarkInnerLayoutHelper: coachMarkInnerLayoutHelper ?? DefaultCoachMarkInnerLayoutHelper())
     }
 
     /// Hides the given CoachMark View
