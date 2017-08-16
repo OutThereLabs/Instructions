@@ -92,6 +92,7 @@ class CoachMarksViewController: UIViewController {
     fileprivate var _shouldAutorotate: Bool = true
     fileprivate var _prefersStatusBarHidden: Bool = false
     fileprivate var _supportedInterfaceOrientations: UIInterfaceOrientationMask = [.portrait]
+    fileprivate var _preferredStatusBarStyle: UIStatusBarStyle = .default
 
     // MARK: - Lifecycle
     convenience init(coachMarkDisplayManager: CoachMarkDisplayManager,
@@ -157,6 +158,10 @@ class CoachMarksViewController: UIViewController {
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return _supportedInterfaceOrientations
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return _preferredStatusBarStyle
     }
 }
 
@@ -400,5 +405,6 @@ private extension CoachMarksViewController {
         _shouldAutorotate = parentViewController.shouldAutorotate
         _prefersStatusBarHidden = parentViewController.prefersStatusBarHidden
         _supportedInterfaceOrientations = parentViewController.supportedInterfaceOrientations
+        _preferredStatusBarStyle = parentViewController.preferredStatusBarStyle
     }
 }
